@@ -3,18 +3,19 @@
 using namespace std;
 
 char decision, key;
+int tick;
+
 void intro()
 {
 	cout << "TROLL FACE GENERATOR" << endl;
-	cout << "a program by \n" << endl;
+	cout << "a program by DICE_JAR\n" << endl;
 	cout << "follow my github: https://github.com/KZTam" << endl;	
 }
 
 void delay(int ms) //delay by holding the program
 {
-	int tick;
-	while (tick<ms) tick++;
 	tick = 0;
+	while (tick<ms) tick++;
 }
 
 int main()
