@@ -3,6 +3,27 @@
 #include <cmath>
 using namespace std;
 
+/*  PROJECT TITLE: Decimal to Any Base Converter
+*	Author: DICE_JAR (KZTam)
+*	Date Created: 19 ,November, 2022, 1:35:35 PM
+*	Version: 1.1
+*	
+*	Follow my github: https://github.com/KZTam
+*
+*  VERSION LISTS:
+*  1.0 - program created.
+*  1.1 - add bit counter for binaries for ease of finding how many bits of a decimal integer.
+*	   - add byte counter for binaries for ease of finding how many bytes of a decimal integer. (8 bits = 1 byte)
+*  1.2 - try converting code to embedded C and stm32f103c8t6 (bluepill), using UART transmission.
+*
+*	BUG:
+*	1) maximum input range is 31 bits. (integer = 2147483648). If integer higher value than maximum value, program will terminate immediately or causing an infinite loop.
+*
+*	IMPROVEMENTS:
+*	1) since class type "int" is int32_t, to solve the bug above, use long sign integer class type. 
+*	2) No try to solve because user never thought to input large integer.
+*/	
+
 void intro()
 {
 	cout << "DECIMAL TO ANY BASE CONVERTER\n";
@@ -83,6 +104,8 @@ void BINconversion(int n)
 	for(int y = count - 1; y >= 0; y--){
 		cout << bin[y];
 	}
+	cout << "  ( " << count << " bit )";
+	cout << "  ( " << (float)count/8 << " byte )";
 }
 
 void base4conversion(int n)
@@ -134,7 +157,7 @@ int main()
 	
 	int decimal,count =0,bin[100], bin2;
 	string boolean, operation;
-	for (int a = 0; a <99999; a++){
+	while(1){
 		cout << "\ninteger?\n";
 		cin >> decimal; 
 		BINconversion(decimal);
@@ -144,7 +167,7 @@ int main()
 		graycode(decimal);
 		one_complement(decimal);
 		two_complement(decimal);
-		cout << "\nYour hexadecimal will be: ";
+		cout << "\nYour hexadecimal will be: 0x";
 		cout << std::hex << decimal;
 		cout << "\n\nWanna continue? yes or no?\n";
 		cin >> boolean;
@@ -162,5 +185,4 @@ int main()
 	}
 	cout << "\n\nGOOD BYE.\n";
 	cout << "Have a nice day ^w^\n";
-	return 0;
 }
