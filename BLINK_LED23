@@ -6,6 +6,7 @@ void setup() {
   pinMode(PIN_A4, OUTPUT);
 }
 
+//Global variable
 int helikopter = 0;
 int blink_counter = 0;
 int state_led = 0;
